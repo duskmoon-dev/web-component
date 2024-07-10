@@ -1,0 +1,8 @@
+[install]
+registry = { url = "https://nexus.gsmlg.net/repository/npm/" }
+
+[define]
+"process.env.brand" = "'Combat Insight'"
+
+[run]
+shell = "bun"

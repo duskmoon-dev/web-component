@@ -1,0 +1,15 @@
+{
+  "name": "@duskmoon-dev/web-component",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "components/*"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
