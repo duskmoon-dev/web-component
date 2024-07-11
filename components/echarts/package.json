@@ -1,0 +1,50 @@
+{
+  "name": "@duskmoon-dev/echarts-el",
+  "version": "0.0.0-semantically-released",
+  "module": "src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "lit",
+    "lit-element",
+    "lit-html",
+    "component",
+    "ui"
+  ],
+  "dependencies": {
+    "echarts": "^5.5.1",
+    "echarts-gl": "^2.0.9",
+    "lit": "^3.1.4",
+    "lit-html": "^3.1.4"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.1.11",
+    "@storybook/addon-links": "^8.1.11",
+    "@storybook/blocks": "^8.1.11",
+    "@storybook/test": "^8.1.11",
+    "@storybook/web-components": "^8.1.11",
+    "@storybook/web-components-vite": "^8.1.11",
+    "@types/bun": "latest",
+    "storybook": "^8.1.11"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "storybook": "storybook dev -p 6006 --disable-telemetry --no-open",
+    "build-storybook": "storybook build --disable-telemetry"
+  }
+}
