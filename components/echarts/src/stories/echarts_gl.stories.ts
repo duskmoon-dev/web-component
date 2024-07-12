@@ -85,6 +85,7 @@ import topoImg from './assets/world.topo.bathy.200401.jpg';
 import bathImg from './assets/bathymetry_bw_composite_4k.jpg';
 import earthImg from './assets/earth.jpg';
 import starfieldImg from './assets/starfield.jpg';
+import westerlundImg from './assets/westerlund-2.jpg';
 
 export const Globe: Story = {
   args: {
@@ -94,7 +95,7 @@ export const Globe: Story = {
       globe: {
         baseTexture: `${earthImg}`,
         heightTexture: `${bathImg}`,
-        environment: `${starfieldImg}`,
+        environment: `${westerlundImg}`,
         shading: 'color',
         light: {
           ambient: {
