@@ -83,6 +83,8 @@ export const Primary: Story = {
 
 import topoImg from './assets/world.topo.bathy.200401.jpg';
 import bathImg from './assets/bathymetry_bw_composite_4k.jpg';
+import earthImg from './assets/earth.jpg';
+import starfieldImg from './assets/starfield.jpg';
 
 export const Globe: Story = {
   args: {
@@ -90,32 +92,73 @@ export const Globe: Story = {
     innerHTML: JSON.stringify({
       backgroundColor: '#222',
       globe: {
-        baseTexture: `${topoImg}`,
+        baseTexture: `${earthImg}`,
         heightTexture: `${bathImg}`,
-        shading: 'lambert',
+        environment: `${starfieldImg}`,
+        shading: 'color',
         light: {
           ambient: {
-            intensity: 0.6
+            intensity: 1
           },
           main: {
-            intensity: 0.6
+            intensity: 1
           }
         },
         viewControl: {
           autoRotate: true
         }
       },
-      series: {
-        type: 'lines3D',
-        coordinateSystem: 'globe',
-        blendMode: 'lighter',
-        lineStyle: {
-          width: 1,
-          color: 'rgb(50, 50, 150)',
-          opacity: 0.1
+      series: [
+        {
+          type: 'scatter3D',
+          coordinateSystem: 'globe',
+          label: { 
+            show: true, 
+            distance: 5,
+            formatter: '{b}'
+          },
+          stack: 'value',
+          stackStrategy: 'all',
+          data: [
+            {
+              name: 'Beijing',
+              value: [116.401159, 39.902798, 0],
+            },
+            {
+              name: 'Guangzhou',
+              value: [113.295827, 23.116548, 0],
+            },
+          ],
+          silent: false,
+          itemStyle: {
+            color: 'lightblue'
+          }
         },
-        data: [],
-      }
+        {
+          type: 'lines3D',
+          coordinateSystem: 'globe',
+          name: 'line',
+          effect: {
+            show: true,
+            trailWidth: Math.E,
+            trailLength: Math.E,
+            trailOpacity: .75,
+            trailColor: 'rgb(230, 30, 60)'
+          },
+          lineStyle: {
+            width: Math.E,
+            color: 'rgb(250, 50, 50)',
+            opacity: 0.5
+          },
+          blendMode: 'lighter',
+          data: [
+            [
+              [116.401159, 39.902798, 1],
+              [113.295827, 23.116548, 1],
+            ],
+          ],
+        },
+      ],
     }),
   },
 };

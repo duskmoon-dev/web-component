@@ -10,6 +10,7 @@
     "components/*"
   ],
   "devDependencies": {
+    "@changesets/cli": "^2.27.7",
     "@types/bun": "latest"
   },
   "peerDependencies": {
