@@ -4,7 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "release": "pnpm --recursive run build"
+    "prerelease": "pnpm --recursive run build",
+    "release": "changeset version",
+    "postrelease": "pnpm --recursive publish"
   },
   "workspaces": [
     "components/*"
