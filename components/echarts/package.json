@@ -1,12 +1,14 @@
 {
   "name": "@duskmoon-dev/echarts-el",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "module": "src/index.ts",
   "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.js"
     },
+    "./echarts": "./dist/echarts.js",
+    "./echarts-gl": "./dist/echarts_gl.js",
     "./package.json": "./package.json"
   },
   "files": [
