@@ -1,5 +1,6 @@
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { DuskmoonEcharts } from './echarts';
+import { type EChartsInitOpts } from 'echarts';
 import 'echarts-gl';
 
 declare global {
@@ -12,4 +13,7 @@ declare global {
 export { DuskmoonEchartsGL };
 
 @customElement('dm-echarts-gl')
-class DuskmoonEchartsGL extends DuskmoonEcharts {}
+class DuskmoonEchartsGL extends DuskmoonEcharts {
+  @property({ type: String, attribute: true, reflect: true })
+  renderer: EChartsInitOpts['renderer'] = 'canvas';
+}
