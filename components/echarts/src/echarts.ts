@@ -3,6 +3,8 @@ import { customElement, property } from 'lit/decorators.js';
 import * as echarts from 'echarts';
 import { type EChartsInitOpts } from 'echarts';
 
+import * as events from './events';
+
 declare global {
   interface HTMLElementTagNameMap {
     'dm-echarts': DuskmoonEcharts;
@@ -49,6 +51,13 @@ class DuskmoonEcharts extends LitElement {
     if (this.parentElement) {
       this.resizeObserver?.unobserve(this.parentElement);
     }
+    const evt = new CustomEvent(events.CHART_DISPOSE_EVENT, {
+      detail: {
+        chart: this.chart,
+        options: this.options,
+      },
+    });
+    this.dispatchEvent(evt);
     this.chart?.dispose();
     this.observer?.disconnect();
   }
@@ -65,6 +74,13 @@ class DuskmoonEcharts extends LitElement {
       this.updateChart();
     });
     this.observer.observe(this, { subtree: true, childList: true, attributes: true });
+    const evt = new CustomEvent(events.CHART_INIT_EVENT, {
+      detail: {
+        chart: this.chart,
+        options: this.options,
+      },
+    });
+    this.dispatchEvent(evt);
   }
 
   override attributeChangedCallback(
@@ -90,10 +106,24 @@ class DuskmoonEcharts extends LitElement {
 
   updateChart() {
     this.chart?.setOption(this.options);
+    const evt = new CustomEvent(events.CHART_UPDATED_EVENT, {
+      detail: {
+        chart: this.chart,
+        options: this.options,
+      },
+    });
+    this.dispatchEvent(evt);
   }
 
   resetChart() {
     this.chart?.setOption(this.options, true);
+    const evt = new CustomEvent(events.CHART_RESET_EVENT, {
+      detail: {
+        chart: this.chart,
+        options: this.options,
+      },
+    });
+    this.dispatchEvent(evt);
   }
 
   _options = {};
