@@ -1,15 +1,42 @@
-# @gsmlg-webcomponent/logo
+# @duskmoon-dev/echarts-el
+
+Provides html custom elements: 
+
+- `dm-echarts`
+- `dm-echarts-gl`
+
+```html
+<dm-echarts>
+    {JSON.stringify(config)}
+</dm-echarts>
+
+<dm-echarts-gl>
+    {JSON.stringify(config)}
+</dm-echarts-gl>
+```
+
+## For developer
 
 To install dependencies:
 
-```bash
+```shell
 bun install
 ```
 
-To run:
+To Show storybook:
 
-```bash
-bun run src/index.ts
+```shell
+bun run storybook
 ```
 
-This project was created using `bun init` in bun v1.1.10. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+To build:
+
+```shell
+bun run build
+```
+
+To publish:
+
+```shell
+npm publish
+```
